@@ -1,7 +1,7 @@
-$("#submit").on("click", function(event){
+$("#submit").on("click", function(event) {
   event.preventDefault();
 
-  function validateForm () {
+  function validateForm() {
     var isValid = true;
     console.log(isValid);
     $(".form-control").each(function() {
@@ -13,10 +13,10 @@ $("#submit").on("click", function(event){
     return isValid;
   }
 
-  if(validateForm()){
+  if (validateForm()) {
     var userData = {
-      name : $("#survey_name").val(),
-      photo : $("#survey_link").val(),
+      name: $("#survey_name").val(),
+      photo: $("#survey_link").val(),
       scores: [
         $("#survey_q1").val(),
         $("#survey_q2").val(),
@@ -30,9 +30,16 @@ $("#submit").on("click", function(event){
         $("#survey_q10").val()
       ]
     };
-    console.log("Finished Correctly");
-    console.log(userData);
-  } else{
+    $.post('/api/friends', userData)
+      .done(function(data) {
+        // console.log('response = ' + JSON.stringify(data));
+        // Set the name and image values of friend match
+        $('#userMatch').html(data.matchName);
+        $("#userMatchImage").attr("src", data.matchImage);
+        // Pop open the modal dialog
+        $('#results-modal').modal('toggle');
+      });
+  } else {
     alert("Please fill out all fields before submitting.")
   }
 })
