@@ -1,3 +1,5 @@
+//Array with objects containing default users.
+
 var friends = [
   {
   "name": "Ahmed",

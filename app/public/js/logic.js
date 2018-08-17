@@ -1,19 +1,25 @@
+
+//Execute POST after click on button submit.
 $("#submit").on("click", function(event) {
   event.preventDefault();
 
+  //Validate that all the fields were answered.
   function validateForm() {
     var isValid = true;
-    console.log(isValid);
+
+    //Run though each question to check the answer was selected.
     $(".form-control").each(function() {
       if ($(this).val() === "Select an option") {
         isValid = false;
-        console.log("Inside IF" + isValid);
       }
     });
     return isValid;
   }
 
+  //IF all the validation is positive then create the POST.
   if (validateForm()) {
+
+    //Creates object with all the answers from the user.
     var userData = {
       name: $("#survey_name").val(),
       photo: $("#survey_link").val(),
@@ -30,16 +36,21 @@ $("#submit").on("click", function(event) {
         $("#survey_q10").val()
       ]
     };
+
+    //Call the POST and sends object.
     $.post('/api/friends', userData)
+      //Receives confirmation of POST + best match user and image.
       .done(function(data) {
-        // console.log('response = ' + JSON.stringify(data));
-        // Set the name and image values of friend match
-        $('#userMatch').html(data.matchName);
-        $("#userMatchImage").attr("src", data.matchImage);
+
+
+        $('#user-match').html(data.matchName);
+        $("#image-match").attr("src", data.matchImage);
         // Pop open the modal dialog
         $('#results-modal').modal('toggle');
       });
-  } else {
+  }
+  //IF validation wasn't succesful display alert.
+  else {
     alert("Please fill out all fields before submitting.")
   }
 })
