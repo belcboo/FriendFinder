@@ -1,11 +1,9 @@
 $("#submit").on("click", function(event){
   event.preventDefault();
 
-  //Validate if all fields were selected
-  function validateForm() {
-
+  function validateForm () {
     var isValid = true;
-
+    console.log(isValid);
     $(".form-control").each(function() {
       if ($(this).val() === "Select an option") {
         isValid = false;
@@ -32,13 +30,8 @@ $("#submit").on("click", function(event){
         $("#survey_q10").val()
       ]
     };
-
-    //Cleaning the fields.
-    $("#survey_name").val("");
-    $("#survey_link").val("");
-
-
-
+    console.log("Finished Correctly");
+    console.log(userData);
   } else{
     alert("Please fill out all fields before submitting.")
   }

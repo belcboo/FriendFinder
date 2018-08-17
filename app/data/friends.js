@@ -1,4 +1,5 @@
-[{
+var friends = [
+  {
   "name": "Ahmed",
   "photo": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAq7AAAAJDAwYzI4NTQ4LWYwZWUtNGFkYS1hNTYwLTZjYzkwY2ViZDA3OA.jpg",
   "scores": ["5", "1", "4", "4", "5", "1", "2", "5", "4", "1"]
@@ -22,4 +23,6 @@
   "name": "Jordan Biason",
   "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAisAAAAJGUxYzc4YzA0LWQxMzUtNGI4NS04YTFiLTkwYzM0YTZkNzA2NA.jpg",
   "scores": ["4", "4", "2", "3", "2", "2", "3", "2", "4", "5"]
-}]
+}];
+
+module.exports = friends;

@@ -27,6 +27,9 @@ app.use(bodyParser.json());
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
+//Define all files in public as
+app.use(express.static("app/public"));
+
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
